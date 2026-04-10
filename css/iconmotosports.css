@@ -1,0 +1,475 @@
+/* =============================================
+   ICON MOTOSPORTS — VAN HOLTZ CO.
+   CSS-ONLY (sin JavaScript)
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #ebebeb;
+  --text: #111111;
+  --muted: #555555;
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+  --max: 1300px;
+  --pad: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+html { font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* =============================================
+   HEADER
+   ============================================= */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 1.25rem var(--pad);
+  pointer-events: none;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 0.88;
+  color: rgba(0,0,0,0.13);
+  letter-spacing: -0.01em;
+}
+
+/* =============================================
+   PROJECT INTRO
+   ============================================= */
+
+.project-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr 260px;
+  gap: 2.5rem;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 7rem var(--pad) 4.5rem;
+}
+
+.intro-left h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.3rem, 2vw, 1.85rem);
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+}
+
+.intro-left p,
+.intro-center p {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.meta-links {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.6rem;
+}
+
+.meta-links a {
+  font-weight: 700;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  transition: opacity 0.2s;
+}
+.meta-links a:hover { opacity: 0.5; }
+
+.meta-label {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 1.1rem;
+}
+
+.meta-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.85rem;
+}
+
+.meta-title {
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.meta-group span:not(.meta-title) {
+  font-size: 0.78rem;
+}
+
+/* =============================================
+   BLOCKS (secciones con padding)
+   ============================================= */
+
+.block {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad) 5rem;
+}
+
+/* =============================================
+   CAROUSEL WRAPPER (imagen + info panel)
+   ============================================= */
+
+.carousel-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 0;
+  align-items: start;
+  margin-bottom: 2.5rem;
+}
+
+/* =============================================
+   IMAGEN ÚNICA (no carrusel)
+   ============================================= */
+
+.single-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000;
+  margin-right: calc(240px + 1.75rem);
+  height: 2500px;
+}
+
+.single-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =============================================
+   CAROUSEL — CSS ONLY
+   ============================================= */
+.carousel {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 0;
+  align-items: start;
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
+.carousel input[type="radio"] { display: none; }
+.carousel__stage { grid-column: 1; overflow: hidden; width: 100%; background: #000; }
+.carousel__track { display: flex; width: 100%; transition: transform 0.5s ease-in-out; }
+.carousel__slide { flex: 0 0 100%; aspect-ratio: 16 / 9; overflow: hidden; position: relative; }
+.carousel__slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.carousel__sidebar { grid-column: 2; display: flex; flex-direction: column; }
+
+/* === CAROUSEL POSITIONS === */
+#c1s1:checked ~ .carousel__stage .carousel__track { transform: translateX(0%); }
+#c1s2:checked ~ .carousel__stage .carousel__track { transform: translateX(-100%); }
+#c1s3:checked ~ .carousel__stage .carousel__track { transform: translateX(-200%); }
+
+#c2s1:checked ~ .carousel__stage .carousel__track { transform: translateX(0%); }
+#c2s2:checked ~ .carousel__stage .carousel__track { transform: translateX(-100%); }
+#c2s3:checked ~ .carousel__stage .carousel__track { transform: translateX(-200%); }
+#c2s4:checked ~ .carousel__stage .carousel__track { transform: translateX(-300%); }
+#c2s5:checked ~ .carousel__stage .carousel__track { transform: translateX(-400%); }
+#c2s6:checked ~ .carousel__stage .carousel__track { transform: translateX(-500%); }
+
+#c3s1:checked ~ .carousel__stage .carousel__track { transform: translateX(0%); }
+#c3s2:checked ~ .carousel__stage .carousel__track { transform: translateX(-100%); }
+#c3s3:checked ~ .carousel__stage .carousel__track { transform: translateX(-200%); }
+#c3s4:checked ~ .carousel__stage .carousel__track { transform: translateX(-300%); }
+
+/* Contadores y flechas */
+.carousel__counter {
+    display: flex;
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-family: var(--font-body);
+    margin-bottom: 20px;
+}
+.nav-state { display: none; align-items: center; gap: 10px; }
+
+#c1s1:checked ~ .carousel__sidebar .nav-state-1,
+#c1s2:checked ~ .carousel__sidebar .nav-state-2,
+#c1s3:checked ~ .carousel__sidebar .nav-state-3 { display: flex; }
+
+#c2s1:checked ~ .carousel__sidebar .nav-state-1,
+#c2s2:checked ~ .carousel__sidebar .nav-state-2,
+#c2s3:checked ~ .carousel__sidebar .nav-state-3,
+#c2s4:checked ~ .carousel__sidebar .nav-state-4,
+#c2s5:checked ~ .carousel__sidebar .nav-state-5,
+#c2s6:checked ~ .carousel__sidebar .nav-state-6 { display: flex; }
+
+#c3s1:checked ~ .carousel__sidebar .nav-state-1,
+#c3s2:checked ~ .carousel__sidebar .nav-state-2,
+#c3s3:checked ~ .carousel__sidebar .nav-state-3,
+#c3s4:checked ~ .carousel__sidebar .nav-state-4 { display: flex; }
+
+.carousel__counter label {
+    cursor: pointer; font-size: 1rem; color: var(--text); line-height: 1; user-select: none;
+}
+.carousel__counter label:hover { opacity: 0.5; }
+
+/* =============================================
+   INFO PANEL (columna derecha)
+   ============================================= */
+
+.carousel-info {
+  padding: 0 0 0 1.75rem;
+}
+
+.carousel-info h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.carousel-info p {
+  font-size: 0.8rem;
+  line-height: 1.65;
+  margin-bottom: 0.7rem;
+}
+
+.info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+.info-list li {
+  font-size: 0.8rem;
+}
+
+.info-list.top-space {
+  margin-top: 1rem;
+}
+
+/* =============================================
+   TWO-COLUMN TEXT
+   ============================================= */
+
+.two-col-text {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-right: calc(240px + 1.75rem);
+}
+
+.two-col-text p {
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+/* =============================================
+   QUOTE
+   ============================================= */
+
+.quote-section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 4.5rem var(--pad) 5rem;
+  margin-right: calc(240px + 1.75rem);
+}
+
+.quote-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  max-width: 800px;
+}
+
+.quote-mark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 3.5rem;
+  line-height: 0.75;
+  flex-shrink: 0;
+  margin-top: 0.4rem;
+}
+
+blockquote p {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 3vw, 2.6rem);
+  line-height: 1.12;
+  margin-bottom: 0.5rem;
+}
+
+blockquote cite {
+  display: block;
+  font-style: normal;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--text);
+  margin-top: 1.5rem;
+}
+
+/* =============================================
+   MOBILE BLOCK
+   ============================================= */
+
+.mobile-block {
+  padding-bottom: 3rem;
+}
+
+.mobile-block img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* =============================================
+   CLOSING
+   ============================================= */
+
+.closing-section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 1rem var(--pad) 6rem;
+  margin-right: calc(240px + 1.75rem);
+}
+
+.closing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.closing-grid h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  line-height: 1.12;
+  margin-bottom: 1.25rem;
+}
+
+.closing-grid p {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.inline-link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+
+/* =============================================
+   NEXT PROJECT
+   ============================================= */
+
+.next-project {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 2rem var(--pad) 5rem;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.next-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.next-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(4rem, 12vw, 11rem);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--text);
+  text-align: right;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .project-intro {
+    grid-template-columns: 1fr 1fr;
+  }
+  .intro-right {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .meta-links { grid-column: 1 / -1; }
+}
+
+@media (max-width: 768px) {
+  .project-intro {
+    grid-template-columns: 1fr;
+    padding-top: 5.5rem;
+    gap: 1.75rem;
+  }
+  .single-img, .two-col-text, .quote-section, .closing-section { margin-right: 0; }
+  .intro-right {
+    grid-column: unset;
+    display: block;
+  }
+
+  .carousel-wrapper, .carousel {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .carousel-info {
+    padding: 0;
+  }
+
+  .two-col-text {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .quote-inner {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .quote-mark { font-size: 2.5rem; }
+  blockquote p { font-size: 1.35rem; }
+
+  .closing-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  .next-title { font-size: clamp(3rem, 18vw, 6rem); }
+}
+
+@media (max-width: 480px) {
+  .carousel-area,
+  .single-img {
+    aspect-ratio: 4 / 3;
+  }
+}
